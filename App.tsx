@@ -17,7 +17,7 @@ function App(): React.JSX.Element {
       />
       <TouchableOpacity
         onPress={() => {
-          Alert.alert('swe');
+          Alert.alert('swew');
         }}>
         <Text style={styles.scanButton}>SCAN</Text>
       </TouchableOpacity>
