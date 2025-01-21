@@ -4,7 +4,7 @@ const logo = require("../assets/images/bonjour-logo.png");
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Image alt="logo" source={logo} style={{ width: 300, height: 300 }} />
+      <Image alt="logo" source={logo} style={styles.logo} />
     </View>
   );
 }
