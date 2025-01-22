@@ -1,10 +1,16 @@
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, Button, Alert } from "react-native";
 const logo = require("../assets/images/bonjour-logo.png");
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
+      <Button
+        title="SCAN"
+        onPress={() => {
+          Alert.alert("SCAN");
+        }}
+      />
     </View>
   );
 }
