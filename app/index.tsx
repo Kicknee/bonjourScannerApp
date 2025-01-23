@@ -1,16 +1,26 @@
-import { Text, View, Image, StyleSheet, Button, Alert } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  Button,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 const logo = require("../assets/images/bonjour-logo.png");
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
-      <Button
-        title="SCAN"
+      <TouchableOpacity
+        style={styles.scanButtonContainer}
         onPress={() => {
           Alert.alert("SCAN");
         }}
-      />
+      >
+        <Text style={styles.scanButtonText}>SCAN</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -27,8 +37,16 @@ const styles = StyleSheet.create({
     aspectRatio: "1 / 1",
     marginTop: 30,
   },
-  scanButton: {
-    color: "red",
+  scanButtonContainer: {
     marginTop: 70,
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+    borderRadius: 3,
+    alignItems: "center",
+    backgroundColor: "#D9D9D9B3", // 70% opacity
+  },
+  scanButtonText: {
+    fontSize: 24,
+    color: "#FFF",
   },
 });
