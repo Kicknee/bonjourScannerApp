@@ -8,41 +8,25 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
-import Camera from "./camera/camera";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const logo = require("../assets/images/bonjour-logo.png");
-
-export default function Index() {
-  const [permission, requestPermission] = useCameraPermissions();
-
-  if (!permission) {
-    // Camera permissions are still loading.
-    return <View />;
-  }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet.
-    return (
-      <View style={styles.container}>
-        <Text>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
-
+export default function Camera() {
   return (
-    <View style={styles.container}>
-      <Image alt="logo" source={logo} style={styles.logo} />
-      <TouchableOpacity
-        style={styles.scanButtonContainer}
-        onPress={() => {
-          Alert.alert("SCAN");
+    <SafeAreaView style={StyleSheet.absoluteFillObject}>
+      <CameraView
+        facing="back"
+        barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
+        onBarcodeScanned={({ data }) => {
+          Alert.alert("das");
         }}
       >
-        <Text style={styles.scanButtonText}>SCAN</Text>
-      </TouchableOpacity>
-      <Camera />
-    </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.text}>Close</Text>
+          </TouchableOpacity>
+        </View>
+      </CameraView>
+    </SafeAreaView>
   );
 }
 
