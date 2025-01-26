@@ -1,49 +1,32 @@
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Button,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Camera() {
+export default function ScannerQR({ setEnableScanner }) {
   return (
-    <SafeAreaView style={StyleSheet.absoluteFillObject}>
+    <SafeAreaView>
       <CameraView
         facing="back"
         barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
         onBarcodeScanned={({ data }) => {
-          Alert.alert("das");
+          console.log("data", data);
         }}
       >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.text}>Close</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={styles.scanButtonContainer}
+          onPress={() => {
+            setEnableScanner(false);
+          }}
+        >
+          <Text style={styles.text}>Close</Text>
+        </TouchableOpacity>
       </CameraView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "black",
-    alignItems: "center",
-  },
-  logo: {
-    minHeight: "40%",
-    aspectRatio: "1 / 1",
-    marginTop: 30,
-  },
   scanButtonContainer: {
-    marginTop: 70,
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 3,
