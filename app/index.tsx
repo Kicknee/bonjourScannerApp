@@ -15,7 +15,6 @@ const logo = require("../assets/images/bonjour-logo.png");
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [enableScannerQR, setEnableScanner] = useState(false);
-
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
