@@ -4,8 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ScannerQR({ setEnableScanner }) {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={[StyleSheet.absoluteFillObject, styles.container]}>
       <CameraView
+        style={StyleSheet.absoluteFillObject}
         facing="back"
         barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
         onBarcodeScanned={({ data }) => {
@@ -13,7 +14,7 @@ export default function ScannerQR({ setEnableScanner }) {
         }}
       >
         <TouchableOpacity
-          style={styles.scanButtonContainer}
+          style={styles.buttonContainer}
           onPress={() => {
             setEnableScanner(false);
           }}
@@ -26,7 +27,10 @@ export default function ScannerQR({ setEnableScanner }) {
 }
 
 const styles = StyleSheet.create({
-  scanButtonContainer: {
+  buttonContainer: {
+    position: "absolute",
+    bottom: 20,
+    alignSelf: "center",
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 3,
@@ -36,12 +40,6 @@ const styles = StyleSheet.create({
   scanButtonText: {
     fontSize: 24,
     color: "#FFF",
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    margin: 64,
   },
   button: {
     flex: 1,
