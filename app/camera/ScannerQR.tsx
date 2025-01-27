@@ -1,10 +1,11 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Overlay from "./Overlay";
 
 export default function ScannerQR({ setEnableScanner }) {
   return (
-    <SafeAreaView style={[StyleSheet.absoluteFillObject, styles.container]}>
+    <SafeAreaView style={StyleSheet.absoluteFillObject}>
       <CameraView
         style={StyleSheet.absoluteFillObject}
         facing="back"
@@ -13,6 +14,7 @@ export default function ScannerQR({ setEnableScanner }) {
           console.log("data", data);
         }}
       >
+        <Overlay />
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => {
