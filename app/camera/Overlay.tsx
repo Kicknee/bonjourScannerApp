@@ -6,7 +6,7 @@ const Overlay = () => {
     <View style={styles.container}>
       <View style={styles.mask} />
       <View style={styles.scannerFrameContainer}>
-        <View style={styles.scannerFrame} />
+        <View />
       </View>
       <View style={styles.mask} />
     </View>
