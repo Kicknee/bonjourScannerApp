@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
   },
-  scannerFrame: {
-    width: 270,
-    height: 270,
-    borderWidth: 2,
-    borderColor: "#00FF00",
-    borderRadius: 8,
-  },
+  // scannerFrame: {
+  //   width: 270,
+  //   height: 270,
+  //   borderWidth: 2,
+  //   borderColor: "#00FF00",
+  //   borderRadius: 8,
+  // },
 });
