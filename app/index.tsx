@@ -14,7 +14,8 @@ const logo = require("../assets/images/bonjour-logo.png");
 
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
-  const [enableScannerQR, setEnableScanner] = useState(false);
+  const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
+
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
@@ -29,13 +30,15 @@ export default function Index() {
         <TouchableOpacity
           style={styles.scanButtonContainer}
           onPress={() => {
-            setEnableScanner(true);
+            setIsEnabledScannerQR(true);
           }}
         >
           <Text style={styles.buttonText}>SCAN</Text>
         </TouchableOpacity>
       )}
-      {!!enableScannerQR && <ScannerQR setEnableScanner={setEnableScanner} />}
+      {!!isEnabledScannerQR && (
+        <ScannerQR setIsEnabledScannerQR={setIsEnabledScannerQR} />
+      )}
     </View>
   );
 }
