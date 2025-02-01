@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { CameraView } from "expo-camera";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Overlay from "./Overlay";
 

@@ -1,12 +1,5 @@
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-} from "react-native";
-import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useCameraPermissions } from "expo-camera";
 import ScannerQR from "./camera/ScannerQR";
 import { useState } from "react";
 
