@@ -1,47 +1,55 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Svg, { Defs, ClipPath, Polygon, Rect } from "react-native-svg";
 
-const Overlay = () => {
+export default function Overlay() {
   return (
     <View style={styles.container}>
-      <Svg style={StyleSheet.absoluteFill} viewBox="0 0 100 100">
-        <Defs>
-          <ClipPath id="clipShape">
-            <Polygon points="0,0 0,100 25,100 25,25 75,25 75,75 25,75 25,100 100,100 100,0" />
-          </ClipPath>
-        </Defs>
-        {/* Czarna maska */}
-        <Rect
-          width="100%"
-          height="100%"
-          fill="rgba(0, 0, 0, 0.7)"
-          clipPath="url(#clipShape)"
-        />
-      </Svg>
-
-      {/* Kwadratowa ramka skanera */}
-      <View style={styles.scannerFrame} />
+      <View style={[styles.mask, styles.topMask]} />
+      <View style={styles.middleContainer}>
+        <View style={[styles.mask, styles.leftMask]} />
+        <View style={styles.scannerArea} />
+        <View style={[styles.mask, styles.rightMask]} />
+      </View>
+      <View style={[styles.mask, styles.bottomMask]} />
     </View>
   );
-};
-//clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
-export default Overlay;
-
-const SCANNER_SIZE = 250; // Rozmiar kwadratu do skanowania
+}
 
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: "center",
-    alignItems: "center",
   },
-  scannerFrame: {
-    width: SCANNER_SIZE,
-    height: SCANNER_SIZE,
+  mask: {
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+  },
+  topMask: {
+    width: "100%",
+    height: "32.5%",
+  },
+  bottomMask: {
+    width: "100%",
+    height: "32.5%",
+  },
+  middleContainer: {
+    width: "100%",
+    height: "35%",
+    flexWrap: "wrap",
+  },
+  leftMask: {
+    width: "20%",
+    height: "100%",
+  },
+  rightMask: {
+    width: "20%",
+    height: "100%",
+  },
+
+  scannerArea: {
+    width: "60%",
+    height: "100%",
+    backgroundColor: "transparent",
     borderWidth: 2,
-    borderColor: "#00FF00", // Zielona ramka
-    borderRadius: 8,
-    position: "absolute",
+    borderColor: "#00FF00",
+    borderRadius: 5,
   },
 });

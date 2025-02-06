@@ -31,6 +31,7 @@ export default function ScannerQR({ setIsEnabledScannerQR }) {
 const styles = StyleSheet.create({
   buttonContainer: {
     position: "absolute",
+    zIndex: 11,
     bottom: 20,
     alignSelf: "center",
     paddingVertical: 10,
