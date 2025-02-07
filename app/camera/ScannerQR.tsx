@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#FFF",
   },
-  button: {
-    flex: 1,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
+  // button: {
+  //   flex: 1,
+  //   alignSelf: "flex-end",
+  //   alignItems: "center",
+  // },
   text: {
     fontSize: 24,
     fontWeight: "bold",
