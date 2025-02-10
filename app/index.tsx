@@ -1,4 +1,12 @@
-import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  Linking,
+} from "react-native";
 import { useCameraPermissions } from "expo-camera";
 import ScannerQR from "./camera/ScannerQR";
 import { useState } from "react";
@@ -9,13 +17,27 @@ export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
 
+  const handleRequestPermission = () => {
+    if (!permission?.granted) {
+      requestPermission();
+    } else {
+      Alert.alert(
+        "Camera access required",
+        "You need to manually enable camera access in the app settings.",
+        [
+          { text: "Cancel", style: "cancel" },
+          { text: "Open Settings", onPress: () => Linking.openSettings() },
+        ]
+      );
+    }
+  };
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
       {permission && !permission.granted ? (
         <TouchableOpacity
           style={styles.scanButtonContainer}
-          onPress={requestPermission}
+          onPress={handleRequestPermission}
         >
           <Text style={styles.buttonText}>GRANT PERMISSION</Text>
         </TouchableOpacity>
