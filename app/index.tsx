@@ -8,7 +8,7 @@ import {
   Linking,
 } from "react-native";
 import { useCameraPermissions } from "expo-camera";
-import ScannerQR from "./camera/ScannerQR";
+import ScannerQR from "../components/camera/ScannerQR";
 import { useState } from "react";
 
 const logo = require("../assets/images/bonjour-logo.png");
