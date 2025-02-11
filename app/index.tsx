@@ -8,7 +8,7 @@ import {
   Linking,
 } from "react-native";
 import { useCameraPermissions } from "expo-camera";
-import ScannerQR from "../components/camera/ScannerQR";
+import CameraQR from "../components/CameraQR";
 import { useState } from "react";
 
 const logo = require("../assets/images/bonjour-logo.png");
@@ -52,7 +52,7 @@ export default function Index() {
         </TouchableOpacity>
       )}
       {!!isEnabledScannerQR && (
-        <ScannerQR setIsEnabledScannerQR={setIsEnabledScannerQR} />
+        <CameraQR setIsEnabledScannerQR={setIsEnabledScannerQR} />
       )}
     </View>
   );

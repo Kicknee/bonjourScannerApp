@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-export default function Overlay() {
+export default function CameraOverlay() {
   return (
     <View style={styles.container}>
       <View style={[styles.mask, styles.topMask]} />
