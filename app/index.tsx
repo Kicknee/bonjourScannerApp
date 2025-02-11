@@ -31,6 +31,11 @@ export default function Index() {
       );
     }
   };
+
+  const onCloseCameraQR = () => {
+    setIsEnabledScannerQR(false);
+  };
+
   return (
     <View style={styles.container}>
       <Image alt="logo" source={logo} style={styles.logo} />
@@ -52,7 +57,10 @@ export default function Index() {
         </TouchableOpacity>
       )}
       {!!isEnabledScannerQR && (
-        <CameraQR setIsEnabledScannerQR={setIsEnabledScannerQR} />
+        <CameraQR
+          isVisible={isEnabledScannerQR}
+          onCloseCameraQR={onCloseCameraQR}
+        />
       )}
     </View>
   );
