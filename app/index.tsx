@@ -16,6 +16,7 @@ const logo = require("../assets/images/bonjour-logo.png");
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
+  const [scannedData, setScannedData] = useState(undefined);
 
   const handleRequestPermission = () => {
     if (!permission?.granted) {
@@ -34,6 +35,10 @@ export default function Index() {
 
   const onCloseCameraQR = () => {
     setIsEnabledScannerQR(false);
+  };
+
+  const onSaveScannedData = (data) => {
+    setScannedData(data);
   };
 
   return (
@@ -60,6 +65,7 @@ export default function Index() {
         <CameraQR
           isVisible={isEnabledScannerQR}
           onCloseCameraQR={onCloseCameraQR}
+          saveData={onSaveScannedData}
         />
       )}
     </View>
