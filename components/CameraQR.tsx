@@ -2,11 +2,12 @@ import { Modal, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { CameraView } from "expo-camera";
 import CameraOverlay from "./CameraOverlay";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { QRDATA } from "@/app";
 
 type Props = {
   isVisible: boolean;
   onCloseCameraQR: () => void;
-  saveData: (data) => void;
+  saveData: (data: QRDATA) => void;
 };
 
 export default function CameraQR({
@@ -30,7 +31,8 @@ export default function CameraQR({
           barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
           onBarcodeScanned={({ data }) => {
             console.log("data", data);
-            saveData(data);
+            const parsesData: QRDATA = JSON.parse(data);
+            saveData(parsesData);
             onCloseCameraQR();
           }}
         >

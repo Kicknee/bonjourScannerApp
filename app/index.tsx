@@ -9,14 +9,24 @@ import {
 } from "react-native";
 import { useCameraPermissions } from "expo-camera";
 import CameraQR from "../components/CameraQR";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const logo = require("../assets/images/bonjour-logo.png");
+
+export type QRDATA = {
+  STYLE: string;
+  TYPE: string;
+  PLACE: string;
+  LEFT: number;
+  COLOR: string;
+  BRAND: string;
+  SHIPPING_COMPANY: string;
+};
 
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
-  const [scannedData, setScannedData] = useState(undefined);
+  const [scannedData, setScannedData] = useState<QRDATA | undefined>(undefined);
 
   const handleRequestPermission = () => {
     if (!permission?.granted) {
@@ -37,7 +47,11 @@ export default function Index() {
     setIsEnabledScannerQR(false);
   };
 
-  const onSaveScannedData = (data) => {
+  useEffect(() => {
+    console.log("SCANNED", scannedData?.LEFT);
+  }, [scannedData]);
+
+  const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
   };
 
