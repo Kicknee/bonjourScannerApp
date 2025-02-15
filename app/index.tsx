@@ -81,20 +81,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    height: "40%",
+    height: "30%",
     aspectRatio: "1 / 1",
-    marginTop: 30,
+    marginTop: "30%",
   },
   scanButtonContainer: {
     marginTop: 70,
     paddingVertical: 10,
-    paddingHorizontal: 50,
+    paddingHorizontal: 30,
     borderRadius: 3,
     alignItems: "center",
     backgroundColor: "#D9D9D9B3", // 70% opacity
   },
   buttonText: {
-    fontSize: 24,
+    fontSize: 21,
     color: "#FFF",
   },
 });
