@@ -30,7 +30,6 @@ export default function CameraQR({
           facing="back"
           barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
           onBarcodeScanned={({ data }) => {
-            console.log("data", data);
             const parsesData: QRDATA = JSON.parse(data);
             saveData(parsesData);
             onCloseCameraQR();
