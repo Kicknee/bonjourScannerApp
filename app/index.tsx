@@ -10,6 +10,7 @@ import {
 import { useCameraPermissions } from "expo-camera";
 import CameraQR from "../components/CameraQR";
 import { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
 
 const logo = require("../assets/images/bonjour-logo.png");
 
@@ -22,11 +23,21 @@ export type QRDATA = {
   BRAND: string;
   SHIPPING_COMPANY: string;
 };
+const sample: QRDATA = {
+  STYLE: "P2Q3R",
+  TYPE: "T-SHIRT",
+  PLACE: "Z4",
+  LEFT: Number("170"),
+  COLOR: "POMARANCZOWY",
+  BRAND: "LEVI’S",
+  SHIPPING_COMPANY: "MAERSK LINE",
+};
 
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
-  const [scannedData, setScannedData] = useState<QRDATA | undefined>(undefined);
+  const [scannedData, setScannedData] = useState<QRDATA | undefined>(sample);
+  const router = useRouter();
 
   const handleRequestPermission = () => {
     if (!permission?.granted) {
@@ -42,17 +53,20 @@ export default function Index() {
       );
     }
   };
-
   const onCloseCameraQR = () => {
     setIsEnabledScannerQR(false);
   };
 
   useEffect(() => {
-    console.log("SCANNED", scannedData?.LEFT);
+    console.log("SCANNED", scannedData);
   }, [scannedData]);
 
   const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
+    router.push({
+      pathname: "/product",
+      params: sample,
+    });
   };
 
   return (
@@ -75,6 +89,7 @@ export default function Index() {
           <Text style={styles.buttonText}>SCAN</Text>
         </TouchableOpacity>
       )}
+
       {!!isEnabledScannerQR && (
         <CameraQR
           isVisible={isEnabledScannerQR}
