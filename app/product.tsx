@@ -8,12 +8,12 @@ export default function ProductScreen() {
     <View style={styles.container}>
       <Text style={styles.header}>Product Details</Text>
       <Text>Style: {params.STYLE}</Text>
-      {/* <Text>Type: {params.TYPE}</Text>
+      <Text>Type: {params.TYPE}</Text>
       <Text>Place: {params.PLACE}</Text>
       <Text>Left: {params.LEFT}</Text>
       <Text>Color: {params.COLOR}</Text>
       <Text>Brand: {params.BRAND}</Text>
-      <Text>Shipping Company: {params.SHIPPING_COMPANY}</Text> */}
+      <Text>Shipping Company: {params.SHIPPING_COMPANY}</Text>
     </View>
   );
 }
