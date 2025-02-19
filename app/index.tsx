@@ -1,7 +1,6 @@
 import {
   Text,
   View,
-  Image,
   StyleSheet,
   TouchableOpacity,
   Alert,
@@ -11,8 +10,8 @@ import { useCameraPermissions } from "expo-camera";
 import CameraQR from "../components/CameraQR";
 import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
-
-const logo = require("../assets/images/bonjour-logo.png");
+import Logo from "@/components/Logo";
+import Button from "@/components/Button";
 
 export type QRDATA = {
   STYLE: string;
@@ -71,23 +70,20 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <Image alt="logo" source={logo} style={styles.logo} />
+      <Logo height={30} />
       {permission && !permission.granted ? (
-        <TouchableOpacity
-          style={styles.scanButtonContainer}
-          onPress={handleRequestPermission}
-        >
-          <Text style={styles.buttonText}>GRANT PERMISSION</Text>
-        </TouchableOpacity>
+        <Button label={"GRANT PERMISSION"} onPress={handleRequestPermission} />
       ) : (
-        <TouchableOpacity
-          style={styles.scanButtonContainer}
+        <Button
+          label={"SCAN"}
           onPress={() => {
-            setIsEnabledScannerQR(true);
+            // setIsEnabledScannerQR(true);
+            router.push({
+              pathname: "/product",
+              params: sample,
+            });
           }}
-        >
-          <Text style={styles.buttonText}>SCAN</Text>
-        </TouchableOpacity>
+        />
       )}
 
       {!!isEnabledScannerQR && (
@@ -108,22 +104,5 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "black",
     alignItems: "center",
-  },
-  logo: {
-    height: "30%",
-    aspectRatio: "1 / 1",
-    marginTop: "30%",
-  },
-  scanButtonContainer: {
-    marginTop: 70,
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 3,
-    alignItems: "center",
-    backgroundColor: "#D9D9D9B3", // 70% opacity
-  },
-  buttonText: {
-    fontSize: 21,
-    color: "#FFF",
   },
 });
