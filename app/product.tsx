@@ -1,19 +1,30 @@
 import { useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
+import Logo from "@/components/Logo";
 
 export default function ProductScreen() {
   const params = useLocalSearchParams();
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Product Details</Text>
-      <Text>Style: {params.STYLE}</Text>
-      <Text>Type: {params.TYPE}</Text>
-      <Text>Place: {params.PLACE}</Text>
-      <Text>Left: {params.LEFT}</Text>
-      <Text>Color: {params.COLOR}</Text>
-      <Text>Brand: {params.BRAND}</Text>
-      <Text>Shipping Company: {params.SHIPPING_COMPANY}</Text>
+      <Logo height={20} />
+      <FlatList
+        style={styles.productSection}
+        data={Object.entries(params)}
+        renderItem={({ item }) =>
+          item[0] !== "__EXPO_ROUTER_key" ? (
+            <View style={styles.productInfo}>
+              <Text style={styles.text}>
+                {item[0] === "SHIPPING_COMPANY" ? "SHIPPING CO." : item[0]}
+              </Text>
+              <Text style={[styles.text, { textAlign: "left" }]}>
+                {item[1]}
+              </Text>
+            </View>
+          ) : null
+        }
+        keyExtractor={(product) => product[0]}
+      />
     </View>
   );
 }
@@ -21,13 +32,25 @@ export default function ProductScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 15,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
   },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+  productSection: {
+    width: "100%",
+    marginTop: 70,
+  },
+  productInfo: {
+    flex: 1,
+    justifyContent: "space-between",
+    flexDirection: "row",
+    paddingVertical: 10,
+  },
+  text: {
+    width: "auto",
+    color: "#fff",
+    fontSize: 19,
   },
 });
