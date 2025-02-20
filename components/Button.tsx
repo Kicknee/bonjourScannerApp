@@ -14,7 +14,6 @@ export default function Button({ label, onPress }: Props) {
 
 const styles = StyleSheet.create({
   scanButtonContainer: {
-    marginTop: 70,
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderRadius: 3,
