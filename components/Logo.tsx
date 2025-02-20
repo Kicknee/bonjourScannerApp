@@ -19,6 +19,6 @@ export default function Logo({ height }: Props) {
 const styles = StyleSheet.create({
   logo: {
     aspectRatio: "1 / 1",
-    marginTop: "30%",
+    marginTop: "20%",
   },
 });
