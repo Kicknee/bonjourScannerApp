@@ -1,17 +1,11 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  Linking,
-} from "react-native";
+import { View, StyleSheet, Alert, Linking } from "react-native";
 import { useCameraPermissions } from "expo-camera";
 import CameraQR from "../components/CameraQR";
 import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
 import Logo from "@/components/Logo";
 import Button from "@/components/Button";
+import Separator from "@/components/Separator";
 
 export type QRDATA = {
   STYLE: string;
@@ -71,11 +65,12 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Logo height={30} />
+      <Separator marginVertical={40} />
       {permission && !permission.granted ? (
-        <Button label={"GRANT PERMISSION"} onPress={handleRequestPermission} />
+        <Button label="GRANT PERMISSION" onPress={handleRequestPermission} />
       ) : (
         <Button
-          label={"SCAN"}
+          label="SCAN"
           onPress={() => {
             // setIsEnabledScannerQR(true);
             router.push({
