@@ -25,7 +25,7 @@ export default function ProductScreen() {
               <Text style={styles.text}>
                 {item[0] === "SHIPPING_COMPANY" ? "SHIPPING CO." : item[0]}
               </Text>
-              <Text style={styles.text}>{item[1]}</Text>
+              <Text style={[styles.text, { width: "50%" }]}>{item[1]}</Text>
             </View>
           ) : null
         }
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   text: {
-    width: "auto",
     color: "#fff",
     fontSize: 19,
+    textAlign: "left",
   },
 });
