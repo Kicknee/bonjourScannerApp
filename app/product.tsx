@@ -3,9 +3,15 @@ import { FlatList, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import Logo from "@/components/Logo";
 import Button from "@/components/Button";
+import { useRouter } from "expo-router";
 
 export default function ProductScreen() {
   const params = useLocalSearchParams();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/");
+  };
   return (
     <View style={styles.container}>
       <Logo height={20} />
@@ -25,7 +31,7 @@ export default function ProductScreen() {
         }
         keyExtractor={(product) => product[0]}
       />
-      <Button label="TAKE" onPress={() => {}} />
+      <Button label="TAKE" onPress={handleClick} />
     </View>
   );
 }
