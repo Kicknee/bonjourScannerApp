@@ -1,13 +1,17 @@
 import { Modal, StyleSheet, Text, View, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-export default function ProductPicker() {
+type Props = {
+  isVisible: boolean;
+  onClose: () => void;
+};
+export default function ProductPicker({ isVisible, onClose }: Props) {
   return (
-    <Modal animationType="slide">
+    <Modal animationType="slide" visible={isVisible} transparent={true}>
       <View style={styles.modalContent}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Choose a sticker</Text>
-          <Pressable onPress={() => {}}>
+          <Text style={styles.title}>How many products?</Text>
+          <Pressable onPress={onClose}>
             <MaterialIcons name="close" color="#fff" size={22} />
           </Pressable>
         </View>
@@ -20,15 +24,15 @@ const styles = StyleSheet.create({
   modalContent: {
     height: "25%",
     width: "100%",
-    backgroundColor: "#25292e",
+    backgroundColor: "#433c3a",
     borderTopRightRadius: 18,
     borderTopLeftRadius: 18,
     position: "absolute",
     bottom: 0,
   },
   titleContainer: {
-    height: "16%",
-    backgroundColor: "#464C55",
+    height: "17%",
+    backgroundColor: "#1f1e1d",
     borderTopRightRadius: 18,
     borderTopLeftRadius: 18,
     paddingHorizontal: 20,
