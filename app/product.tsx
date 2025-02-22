@@ -1,20 +1,26 @@
 import { useLocalSearchParams } from "expo-router";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, View, Pressable } from "react-native";
 import { StyleSheet } from "react-native";
 import Logo from "@/components/Logo";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function ProductScreen() {
   const params = useLocalSearchParams();
   const router = useRouter();
 
-  const handleClick = () => {
+  const onClose = () => {
     router.push("/");
   };
   return (
     <View style={styles.container}>
       <Logo height={20} />
+      <View style={styles.buttonContainer}>
+        <Pressable onPress={onClose}>
+          <MaterialCommunityIcons name="close-thick" color="red" size={34} />
+        </Pressable>
+      </View>
       <FlatList
         alwaysBounceVertical={true}
         style={styles.productSection}
@@ -31,7 +37,7 @@ export default function ProductScreen() {
         }
         keyExtractor={(product) => product[0]}
       />
-      <Button label="TAKE" onPress={handleClick} />
+      <Button label="TAKE" onPress={onClose} />
     </View>
   );
 }
@@ -46,9 +52,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
+  buttonContainer: {
+    alignSelf: "flex-end",
+    marginRight: 15,
+  },
   productSection: {
     width: "100%",
-    maxHeight: "40%",
+    maxHeight: "50%",
   },
   productInfo: {
     flex: 1,
