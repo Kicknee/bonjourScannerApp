@@ -16,20 +16,11 @@ export type QRDATA = {
   BRAND: string;
   SHIPPING_COMPANY: string;
 };
-const sample: QRDATA = {
-  STYLE: "P2Q3R",
-  TYPE: "T-SHIRT",
-  PLACE: "Z4",
-  LEFT: Number("170"),
-  COLOR: "POMARANCZOWY",
-  BRAND: "LEVI’S",
-  SHIPPING_COMPANY: "MAERSK LINE",
-};
 
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const [isEnabledScannerQR, setIsEnabledScannerQR] = useState(false);
-  const [scannedData, setScannedData] = useState<QRDATA | undefined>(sample);
+  const [scannedData, setScannedData] = useState<QRDATA | undefined>(undefined);
   const router = useRouter();
 
   const handleRequestPermission = () => {
@@ -58,7 +49,7 @@ export default function Index() {
     setScannedData(data);
     router.push({
       pathname: "/product",
-      params: sample,
+      params: data,
     });
   };
 
@@ -72,11 +63,7 @@ export default function Index() {
         <Button
           label="SCAN"
           onPress={() => {
-            // setIsEnabledScannerQR(true);
-            router.push({
-              pathname: "/product",
-              params: sample,
-            });
+            setIsEnabledScannerQR(true);
           }}
         />
       )}
