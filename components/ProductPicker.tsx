@@ -1,11 +1,13 @@
 import { Modal, StyleSheet, Text, View, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { PropsWithChildren } from "react";
 
-type Props = {
+type Props = PropsWithChildren<{
   isVisible: boolean;
   onClose: () => void;
-};
-export default function ProductPicker({ isVisible, onClose }: Props) {
+}>;
+
+export default function ProductPicker({ isVisible, onClose, children }: Props) {
   return (
     <Modal animationType="slide" visible={isVisible} transparent={true}>
       <View style={styles.modalContent}>
@@ -15,6 +17,7 @@ export default function ProductPicker({ isVisible, onClose }: Props) {
             <MaterialIcons name="close" color="#fff" size={22} />
           </Pressable>
         </View>
+        <View style={styles.bodyContainer}>{children}</View>
       </View>
     </Modal>
   );
@@ -39,6 +42,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  bodyContainer: {
+    height: "83%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     color: "#fff",
