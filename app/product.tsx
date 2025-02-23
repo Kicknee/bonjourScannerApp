@@ -7,9 +7,15 @@ import Button from "@/components/Button";
 import { useRouter } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ProductPicker from "@/components/ProductPicker";
+import NumberInput from "@/components/NumberInput";
 
 export default function ProductScreen() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [numberOfProduct, setNumberOfProduct] = useState(0);
+
+  const increaseNumberOfProduct = () => setNumberOfProduct((prev) => prev + 1);
+  const decreaseNumberOfProduct = () =>
+    setNumberOfProduct((prev) => Math.max(0, prev - 1));
 
   const params = useLocalSearchParams();
   const router = useRouter();
@@ -22,6 +28,9 @@ export default function ProductScreen() {
     setIsModalVisible(false);
   };
 
+  const onNumberOfProduct = (value: number) => {
+    setNumberOfProduct(value);
+  };
   const onClose = () => {
     router.push("/");
   };
@@ -51,7 +60,14 @@ export default function ProductScreen() {
         keyExtractor={(product) => product[0]}
       />
       <Button label="TAKE" onPress={onTakeProduct} />
-      <ProductPicker isVisible={isModalVisible} onClose={onModalClose} />
+      <ProductPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <NumberInput
+          value={numberOfProduct}
+          setValue={onNumberOfProduct}
+          increase={increaseNumberOfProduct}
+          decrease={decreaseNumberOfProduct}
+        />
+      </ProductPicker>
     </View>
   );
 }
