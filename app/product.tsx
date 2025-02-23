@@ -8,6 +8,9 @@ import { useRouter } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ProductPicker from "@/components/ProductPicker";
 import NumberInput from "@/components/NumberInput";
+import updateProductQuantity from "./utils/updateProductQuantity";
+import { UpdateProductType } from "./utils/updateProductQuantity";
+import { examineEntry } from "./utils/examineEntry";
 
 export default function ProductScreen() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -17,8 +20,10 @@ export default function ProductScreen() {
   const decreaseNumberOfProduct = () =>
     setNumberOfProduct((prev) => Math.max(0, prev - 1));
 
-  const params = useLocalSearchParams();
+  const product = useLocalSearchParams();
   const router = useRouter();
+
+  delete product.__EXPO_ROUTER_key;
 
   const onTakeProduct = () => {
     setIsModalVisible(true);
@@ -35,6 +40,22 @@ export default function ProductScreen() {
     router.push("/");
   };
 
+  const handleSubmit = async () => {
+    if (numberOfProduct > 1) {
+      const newNumberOfProduct = Number(product.LEFT) - numberOfProduct;
+      const newObj: UpdateProductType = {
+        STYLE: product.STYLE as string,
+        LEFT: newNumberOfProduct,
+      };
+      const response = await updateProductQuantity(newObj);
+      if (!response) {
+        alert("coulnt update");
+      } else {
+        onClose();
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Logo height={20} />
@@ -46,17 +67,15 @@ export default function ProductScreen() {
       <FlatList
         alwaysBounceVertical={true}
         style={styles.productSection}
-        data={Object.entries(params)}
-        renderItem={({ item }) =>
-          item[0] !== "__EXPO_ROUTER_key" ? (
-            <View style={styles.productInfo}>
-              <Text style={styles.text}>
-                {item[0] === "SHIPPING_COMPANY" ? "SHIPPING CO." : item[0]}
-              </Text>
-              <Text style={[styles.text, { width: "50%" }]}>{item[1]}</Text>
-            </View>
-          ) : null
-        }
+        data={Object.entries(product)}
+        renderItem={({ item }) => (
+          <View style={styles.productInfo}>
+            <Text style={styles.text}>{examineEntry(item[0])}</Text>
+            <Text style={[styles.text, { width: "50%" }]}>
+              {examineEntry(item[1] as string | number)}
+            </Text>
+          </View>
+        )}
         keyExtractor={(product) => product[0]}
       />
       <Button label="TAKE" onPress={onTakeProduct} />
@@ -67,6 +86,7 @@ export default function ProductScreen() {
           increase={increaseNumberOfProduct}
           decrease={decreaseNumberOfProduct}
         />
+        <Button label="Accept" onPress={handleSubmit} />
       </ProductPicker>
     </View>
   );
