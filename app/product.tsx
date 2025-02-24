@@ -8,9 +8,9 @@ import { useRouter } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ProductPicker from "@/components/ProductPicker";
 import NumberInput from "@/components/NumberInput";
-import updateProductQuantity from "./utils/updateProductQuantity";
-import { UpdateProductType } from "./utils/updateProductQuantity";
-import { examineEntry } from "./utils/examineEntry";
+import updateProductQuantity from "../utils/updateProductQuantity";
+import { UpdateProductType } from "../utils/updateProductQuantity";
+import { examineEntry } from "../utils/examineEntry";
 
 export default function ProductScreen() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);

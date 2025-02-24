@@ -1,4 +1,4 @@
-import { QRDATA } from "..";
+import { QRDATA } from "../app";
 
 export type UpdateProductType = {
   STYLE: string;
