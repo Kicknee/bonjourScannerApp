@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { View, StyleSheet, Alert, Linking } from "react-native";
 import { useCameraPermissions } from "expo-camera";
 import { useRouter } from "expo-router";
@@ -44,6 +44,15 @@ export default function Index() {
 
   const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
+  };
+
+  useEffect(() => {
+    if (scannedData) {
+      pushScannedData(scannedData);
+    }
+  }, [scannedData]);
+
+  const pushScannedData = (data: QRDATA) => {
     router.push({
       pathname: "/product",
       params: data,
