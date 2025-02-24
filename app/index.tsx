@@ -41,9 +41,7 @@ export default function Index() {
     setIsEnabledScannerQR(false);
   };
 
-  useEffect(() => {
-    console.log("SCANNED", scannedData);
-  }, [scannedData]);
+  useEffect(() => {}, [scannedData]);
 
   const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
