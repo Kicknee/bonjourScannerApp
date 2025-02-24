@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TextInput, Pressable, StyleSheet } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
@@ -8,6 +8,7 @@ type Props = {
   increase: () => void;
   decrease: () => void;
 };
+
 export default function NumberInput({
   value,
   setValue,

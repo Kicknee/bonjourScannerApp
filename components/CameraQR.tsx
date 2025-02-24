@@ -1,7 +1,8 @@
 import { Modal, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { CameraView } from "expo-camera";
-import CameraOverlay from "./CameraOverlay";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
+import CameraOverlay from "./CameraOverlay";
 import { QRDATA } from "@/app";
 
 type Props = {

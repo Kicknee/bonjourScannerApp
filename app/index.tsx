@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { View, StyleSheet, Alert, Linking } from "react-native";
 import { useCameraPermissions } from "expo-camera";
-import CameraQR from "../components/CameraQR";
-import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
+
 import Logo from "@/components/Logo";
 import Button from "@/components/Button";
 import Separator from "@/components/Separator";
+import CameraQR from "../components/CameraQR";
 
 export type QRDATA = {
   STYLE: string;
@@ -41,8 +42,6 @@ export default function Index() {
     setIsEnabledScannerQR(false);
   };
 
-  useEffect(() => {}, [scannedData]);
-
   const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
     router.push({
@@ -66,13 +65,11 @@ export default function Index() {
         />
       )}
 
-      {!!isEnabledScannerQR && (
-        <CameraQR
-          isVisible={isEnabledScannerQR}
-          onCloseCameraQR={onCloseCameraQR}
-          saveData={onSaveScannedData}
-        />
-      )}
+      <CameraQR
+        isVisible={isEnabledScannerQR}
+        onCloseCameraQR={onCloseCameraQR}
+        saveData={onSaveScannedData}
+      />
     </View>
   );
 }

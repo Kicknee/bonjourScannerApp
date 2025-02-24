@@ -1,11 +1,10 @@
-import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { FlatList, Text, View, Pressable } from "react-native";
-import { StyleSheet } from "react-native";
+import { FlatList, Text, View, Pressable, StyleSheet } from "react-native";
+import { useRouter, useLocalSearchParams } from "expo-router";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+
 import Logo from "@/components/Logo";
 import Button from "@/components/Button";
-import { useRouter } from "expo-router";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ProductPicker from "@/components/ProductPicker";
 import NumberInput from "@/components/NumberInput";
 import updateProductQuantity from "../utils/updateProductQuantity";

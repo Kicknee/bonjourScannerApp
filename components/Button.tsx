@@ -4,6 +4,7 @@ type Props = {
   label: string;
   onPress: () => void;
 };
+
 export default function Button({ label, onPress }: Props) {
   return (
     <TouchableOpacity style={styles.scanButtonContainer} onPress={onPress}>
