@@ -1,50 +1,37 @@
-# Welcome to your Expo app 👋
+## BonjourScanner App
+#### English description below
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<br>
 
-## Get started
+![BonjourScannerApp_mobile1](https://github.com/user-attachments/assets/087d4416-d675-4072-95bf-773fdd141d08)
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
 
-2. Start the app
+### Opis / Description
 
-   ```bash
-    npx expo start
-   ```
+Aplikacja mobilna do wyświetlania stanu asortymentu magazynu z odzieżą. Została zbudowana w React Native / Expo. Pozwala na skanowanie kodu QR generowanego na stronie [BonjourScanner](https://github.com/Kicknee/bonjourScanner), który zawiera dane produktu w formacie JSON. Dzięki temu pracownik może udać się do wskazanego przez aplikację miejsca w magazynie i zaznaczyć, ile sztuk danego produktu bierze do wysyłki. Po podaniu liczby aplikacja zaktualizuje bieżący stan asortymentu w bazie MongoDB.
+<br><br>
+A mobile application for displaying the inventory status of a clothing warehouse. It is built with React Native / Expo and allows scanning QR codes generated on the [BonjourScanner](https://github.com/Kicknee/bonjourScanner) website, which contain product data in JSON format. This enables employees to navigate to the location specified by the app and mark the number of items they are picking for shipment. Once the quantity is entered, the app updates the current inventory in the MongoDB database.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+![Screenshot_1740363475s](https://github.com/user-attachments/assets/7b18115d-c7f8-47bf-bffa-8f811c44dd66)
+<br>*Główna strona z przyciskiem do skanowiania kodu QR / Home page with QR code scanning button*
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+![Screenshot_1740365109s](https://github.com/user-attachments/assets/13b9b0d2-704d-4565-b061-ebd6406dbcfd)
+![Screenshot_1740365123s](https://github.com/user-attachments/assets/23aba630-f80a-43d7-8eda-5e8f87249a74)
+<br>*Skaner QR / QR Scanner*
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+![Screenshot_1740364406s](https://github.com/user-attachments/assets/74b973ed-88ea-4b59-a810-31806d1446e8)
+<br>*Informacje produktu ze zeskanowanego kodu QR / Product information from scanned QR code*
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+![Screenshot_1740364481s](https://github.com/user-attachments/assets/c62a57a4-7026-446a-915c-38f3543f59c7)
+<br>*Modal do zadeklarowania ilości produktu do wysyłki / Modal to declare the quantity of product to be shipped*
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
