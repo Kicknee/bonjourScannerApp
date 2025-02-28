@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FlatList, Text, View, Pressable, StyleSheet } from "react-native";
+import {} from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
@@ -67,6 +68,8 @@ export default function ProductScreen() {
         alwaysBounceVertical={true}
         style={styles.productSection}
         data={Object.entries(product)}
+        persistentScrollbar={true}
+        indicatorStyle="white"
         renderItem={({ item }) => (
           <View style={styles.productInfo}>
             <Text style={styles.text}>{examineEntry(item[0])}</Text>
@@ -114,7 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     flexDirection: "row",
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
   text: {
     color: "#fff",

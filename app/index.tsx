@@ -55,7 +55,7 @@ export default function Index() {
   const pushScannedData = (data: QRDATA) => {
     router.push({
       pathname: "/product",
-      params: data,
+      params: scannedData,
     });
   };
 
