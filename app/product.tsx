@@ -47,7 +47,7 @@ export default function ProductScreen() {
       };
       const response = await updateProductQuantity(newObj);
       if (!response) {
-        alert("coulnt update");
+        alert("Couldn't update");
       } else {
         onClose();
       }
