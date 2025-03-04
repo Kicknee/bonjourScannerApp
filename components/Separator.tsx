@@ -6,5 +6,5 @@ type Props = {
 };
 
 export default function Separator({ marginVertical }: Props) {
-  return <View style={{ marginVertical: marginVertical }} />;
+  return <View style={{ marginVertical }} />;
 }
