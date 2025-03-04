@@ -39,7 +39,7 @@ export default function ProductScreen() {
   };
 
   const handleSubmit = async () => {
-    if (numberOfProduct > 1) {
+    if (numberOfProduct > 0) {
       const newNumberOfProduct = Number(product.LEFT) - numberOfProduct;
       const newObj: UpdateProductType = {
         STYLE: product.STYLE as string,
