@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { View, StyleSheet, Alert, Linking } from "react-native";
 import { useCameraPermissions } from "expo-camera";
 import { useRouter } from "expo-router";
@@ -24,6 +24,19 @@ export default function Index() {
   const [scannedData, setScannedData] = useState<QRDATA | undefined>(undefined);
   const router = useRouter();
 
+  const pushScannedData = () => {
+    router.push({
+      pathname: "/product",
+      params: scannedData,
+    });
+  };
+
+  useEffect(() => {
+    if (scannedData) {
+      pushScannedData();
+    }
+  }, [scannedData]);
+
   const handleRequestPermission = () => {
     if (!permission?.granted) {
       requestPermission();
@@ -38,25 +51,9 @@ export default function Index() {
       );
     }
   };
-  const onCloseCameraQR = () => {
-    setIsEnabledScannerQR(false);
-  };
 
   const onSaveScannedData = (data: QRDATA) => {
     setScannedData(data);
-  };
-
-  useEffect(() => {
-    if (scannedData) {
-      pushScannedData(scannedData);
-    }
-  }, [scannedData]);
-
-  const pushScannedData = (data: QRDATA) => {
-    router.push({
-      pathname: "/product",
-      params: scannedData,
-    });
   };
 
   return (
@@ -76,7 +73,7 @@ export default function Index() {
 
       <CameraQR
         isVisible={isEnabledScannerQR}
-        onCloseCameraQR={onCloseCameraQR}
+        onCloseCameraQR={() => setIsEnabledScannerQR(false)}
         saveData={onSaveScannedData}
       />
     </View>
