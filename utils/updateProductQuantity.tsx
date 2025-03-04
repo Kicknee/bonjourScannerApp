@@ -1,5 +1,3 @@
-import { QRDATA } from "../app";
-
 export type UpdateProductType = {
   STYLE: string;
   LEFT: number;
