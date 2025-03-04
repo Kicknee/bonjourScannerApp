@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FlatList, Text, View, Pressable, StyleSheet } from "react-native";
-import {} from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
@@ -8,8 +7,9 @@ import Logo from "@/components/Logo";
 import Button from "@/components/Button";
 import ProductPicker from "@/components/ProductPicker";
 import NumberInput from "@/components/NumberInput";
-import updateProductQuantity from "../utils/updateProductQuantity";
-import { UpdateProductType } from "../utils/updateProductQuantity";
+import updateProductQuantity, {
+  UpdateProductType,
+} from "../utils/updateProductQuantity";
 import { examineEntry } from "../utils/examineEntry";
 
 export default function ProductScreen() {
