@@ -13,18 +13,19 @@ import updateProductQuantity, {
 import { examineEntry } from "../utils/examineEntry";
 
 export default function ProductScreen() {
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [numberOfProduct, setNumberOfProduct] = useState(0);
+
+  const router = useRouter();
+  const { __EXPO_ROUTER_key, ...product } = useLocalSearchParams();
 
   const increaseNumberOfProduct = () => setNumberOfProduct((prev) => prev + 1);
   const decreaseNumberOfProduct = () =>
     setNumberOfProduct((prev) => Math.max(0, prev - 1));
 
-  const product = useLocalSearchParams();
-  const router = useRouter();
-
-  delete product.__EXPO_ROUTER_key;
-
+  const onClose = () => {
+    router.push("/");
+  };
   const onTakeProduct = () => {
     setIsModalVisible(true);
   };
@@ -35,9 +36,6 @@ export default function ProductScreen() {
 
   const onNumberOfProduct = (value: number) => {
     setNumberOfProduct(value);
-  };
-  const onClose = () => {
-    router.push("/");
   };
 
   const handleSubmit = async () => {
@@ -65,11 +63,11 @@ export default function ProductScreen() {
         </Pressable>
       </View>
       <FlatList
-        alwaysBounceVertical={true}
+        alwaysBounceVertical
         style={styles.productSection}
-        data={Object.entries(product)}
-        persistentScrollbar={true}
+        persistentScrollbar
         indicatorStyle="white"
+        data={Object.entries(product)}
         renderItem={({ item }) => (
           <View style={styles.productInfo}>
             <Text style={styles.text}>{examineEntry(item[0])}</Text>
