@@ -24,6 +24,7 @@ export default function ProductScreen() {
     setNumberOfProduct((prev) => Math.max(0, prev - 1));
 
   const onClose = () => {
+    onModalClose();
     router.push("/");
   };
   const onTakeProduct = () => {
